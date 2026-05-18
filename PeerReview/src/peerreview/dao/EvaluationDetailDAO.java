@@ -6,15 +6,9 @@ import java.util.List;
 
 public interface EvaluationDetailDAO {
 
-    boolean ajouterDetail(
-            EvaluationDetail detail
-    );
+    boolean ajouterDetail(EvaluationDetail detail);
 
-    List<EvaluationDetail>
-    afficherDetails();
+    List<EvaluationDetail> afficherDetails();
 
-    List<EvaluationDetail>
-    afficherDetailsParEvaluation(
-            int evaluationId
-    );
+    List<EvaluationDetail> afficherDetailsParEvaluation(int evaluationId);
 }

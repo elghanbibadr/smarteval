@@ -9,13 +9,10 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SubmissionDAOImpl
-        implements SubmissionDAO {
+public class SubmissionDAOImpl implements SubmissionDAO {
 
     @Override
-    public boolean ajouterSubmission(
-            Submission submission
-    ) {
+    public boolean ajouterSubmission(Submission submission) {
 
         Connection connection = null;
 
@@ -23,32 +20,17 @@ public class SubmissionDAOImpl
 
         try {
 
-            connection =
-                    ConnectionDatabase
-                            .getConnection();
+            connection = ConnectionDatabase.getConnection();
 
-            String sql =
-                    "INSERT INTO Submissions " +
-                            "(fichierPDF, etudiant_id, assignment_id) " +
-                            "VALUES (?, ?, ?)";
+            String sql = "INSERT INTO Submissions (fichierPDF, etudiant_id, assignment_id) VALUES (?, ?, ?)";
 
-            ps =
-                    connection.prepareStatement(sql);
+            ps = connection.prepareStatement(sql);
 
-            ps.setString(
-                    1,
-                    submission.getFichierPDF()
-            );
+            ps.setString(1, submission.getFichierPDF());
 
-            ps.setInt(
-                    2,
-                    submission.getEtudiantId()
-            );
+            ps.setInt(2, submission.getEtudiantId());
 
-            ps.setInt(
-                    3,
-                    submission.getAssignmentId()
-            );
+            ps.setInt(3, submission.getAssignmentId());
 
             ps.executeUpdate();
 
@@ -56,20 +38,16 @@ public class SubmissionDAOImpl
 
         } catch (Exception e) {
 
-            System.out.println(
-                    e.getMessage()
-            );
+            System.out.println(e.getMessage());
         }
 
         return false;
     }
 
     @Override
-    public List<Submission>
-    afficherSubmissions() {
+    public List<Submission> afficherSubmissions() {
 
-        List<Submission> liste =
-                new ArrayList<>();
+        List<Submission> liste = new ArrayList<>();
 
         Connection connection = null;
 
@@ -79,71 +57,41 @@ public class SubmissionDAOImpl
 
         try {
 
-            connection =
-                    ConnectionDatabase
-                            .getConnection();
+            connection = ConnectionDatabase.getConnection();
 
-            String sql =
-                    "SELECT * FROM Submissions";
+            String sql = "SELECT * FROM Submissions";
 
-            ps =
-                    connection.prepareStatement(sql);
+            ps = connection.prepareStatement(sql);
 
-            rs =
-                    ps.executeQuery();
+            rs = ps.executeQuery();
 
             while (rs.next()) {
 
-                Submission submission =
-                        new Submission();
+                Submission submission = new Submission();
 
-                submission.setId(
-                        rs.getInt("id")
-                );
+                submission.setId(rs.getInt("id"));
 
-                submission.setFichierPDF(
-                        rs.getString(
-                                "fichierPDF"
-                        )
-                );
+                submission.setFichierPDF(rs.getString("fichierPDF"));
 
-                submission.setDateSubmission(
-                        rs.getString(
-                                "dateSubmission"
-                        )
-                );
+                submission.setDateSubmission(rs.getString("dateSubmission"));
 
-                submission.setEtudiantId(
-                        rs.getInt(
-                                "etudiant_id"
-                        )
-                );
+                submission.setEtudiantId(rs.getInt("etudiant_id"));
 
-                submission.setAssignmentId(
-                        rs.getInt(
-                                "assignment_id"
-                        )
-                );
+                submission.setAssignmentId(rs.getInt("assignment_id"));
 
-                liste.add(
-                        submission
-                );
+                liste.add(submission);
             }
 
         } catch (Exception e) {
 
-            System.out.println(
-                    e.getMessage()
-            );
+            System.out.println(e.getMessage());
         }
 
         return liste;
     }
 
     @Override
-    public boolean supprimerSubmission(
-            int id
-    ) {
+    public boolean supprimerSubmission(int id) {
 
         Connection connection = null;
 
@@ -151,21 +99,13 @@ public class SubmissionDAOImpl
 
         try {
 
-            connection =
-                    ConnectionDatabase
-                            .getConnection();
+            connection = ConnectionDatabase.getConnection();
 
-            String sql =
-                    "DELETE FROM Submissions " +
-                            "WHERE id=?";
+            String sql = "DELETE FROM Submissions WHERE id=?";
 
-            ps =
-                    connection.prepareStatement(sql);
+            ps = connection.prepareStatement(sql);
 
-            ps.setInt(
-                    1,
-                    id
-            );
+            ps.setInt(1, id);
 
             ps.executeUpdate();
 
@@ -173,9 +113,7 @@ public class SubmissionDAOImpl
 
         } catch (Exception e) {
 
-            System.out.println(
-                    e.getMessage()
-            );
+            System.out.println(e.getMessage());
         }
 
         return false;

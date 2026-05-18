@@ -6,13 +6,9 @@ import java.util.List;
 
 public interface CritereDAO {
 
-    boolean ajouterCritere(
-            Critere critere
-    );
+    boolean ajouterCritere(Critere critere);
 
     List<Critere> afficherCriteres();
 
-    boolean supprimerCritere(
-            int id
-    );
+    boolean supprimerCritere(int id);
 }

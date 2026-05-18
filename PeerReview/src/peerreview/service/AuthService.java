@@ -10,48 +10,30 @@ public class AuthService {
 
     public AuthService() {
 
-        userDAO =
-                new UserDAOImpl();
+        userDAO = new UserDAOImpl();
     }
 
-    public void register(
+    public void register(String nom, String email, String motDePasse, String role) {
 
-            String nom,
-
-            String email,
-
-            String motDePasse,
-
-            String role
-    ) {
-
-        User user =
-                new User();
+        User user = new User();
 
         user.setNom(nom);
 
         user.setEmail(email);
 
-        user.setMotDePasse(
-                motDePasse
-        );
+        user.setMotDePasse(motDePasse);
 
         user.setRole(role);
 
-        boolean result =
-                userDAO.register(user);
+        boolean result = userDAO.register(user);
 
         if (result) {
 
-            System.out.println(
-                    "Compte cree avec succes."
-            );
+            System.out.println("Compte cree avec succes.");
 
         } else {
 
-            System.out.println(
-                    "Erreur inscription."
-            );
+            System.out.println("Erreur inscription.");
         }
     }
 
@@ -59,12 +41,8 @@ public class AuthService {
 
             String email,
 
-            String motDePasse
-    ) {
+            String motDePasse) {
 
-        return userDAO.login(
-                email,
-                motDePasse
-        );
+        return userDAO.login(email, motDePasse);
     }
 }

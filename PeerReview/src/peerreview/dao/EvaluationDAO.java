@@ -6,15 +6,9 @@ import java.util.List;
 
 public interface EvaluationDAO {
 
-    boolean ajouterEvaluation(
-            Evaluation evaluation
-    );
+    boolean ajouterEvaluation(Evaluation evaluation);
 
-    List<Evaluation>
-    afficherEvaluations();
+    List<Evaluation> afficherEvaluations();
 
-    List<Evaluation>
-    afficherEvaluationsParSubmission(
-            int submissionId
-    );
+    List<Evaluation> afficherEvaluationsParSubmission(int submissionId);
 }

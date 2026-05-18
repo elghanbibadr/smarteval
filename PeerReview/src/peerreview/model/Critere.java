@@ -14,16 +14,7 @@ public class Critere {
 
     }
 
-    public Critere(
-
-            int id,
-
-            String nom,
-
-            int noteMax,
-
-            int assignmentId
-    ) {
+    public Critere(int id, String nom, int noteMax, int assignmentId) {
 
         this.id = id;
 
@@ -69,9 +60,7 @@ public class Critere {
         return assignmentId;
     }
 
-    public void setAssignmentId(
-            int assignmentId
-    ) {
+    public void setAssignmentId(int assignmentId) {
 
         this.assignmentId = assignmentId;
     }

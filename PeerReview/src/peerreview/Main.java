@@ -23,88 +23,67 @@ public class Main {
 
             Menu.afficherMenuPrincipal();
 
-            int choix =
-                    InputHelper.lireInt(
-                            "Choix : "
-                    );
+            int choix = InputHelper.lireInt("Choix : ");
 
             switch (choix) {
 
                 case 1:
 
-                    User user =
-                            authController.login();
+                    User user = authController.login();
 
                     if (user != null) {
 
-                        if (
-                                user.getRole()
-                                        .equalsIgnoreCase(
-                                                "ENSEIGNANT"
-                                        )
-                        ) {
+                        if (user.getRole().equalsIgnoreCase("ENSEIGNANT")) {
 
-                            boolean logout =
-                                    false;
+                            boolean logout = false;
 
                             while (!logout) {
 
-                                Menu
-                                        .afficherMenuEnseignant();
+                                Menu.afficherMenuEnseignant();
 
-                                int choixEns =
-                                        InputHelper.lireInt(
-                                                "Choix : "
-                                        );
+                                int choixEns = InputHelper.lireInt("Choix : ");
 
                                 switch (choixEns) {
 
                                     case 1:
 
-                                        assignmentController
-                                                .ajouterAssignment();
+                                        assignmentController.ajouterAssignment();
 
                                         break;
 
                                     case 2:
 
-                                        assignmentController
-                                                .afficherAssignments();
+                                        assignmentController.afficherAssignments();
 
                                         break;
 
                                     case 3:
 
-                                        assignmentController
-                                                .supprimerAssignment();
+                                        assignmentController.supprimerAssignment();
 
                                         break;
 
                                     case 4:
 
-                                        critereController
-                                                .ajouterCritere();
+                                        critereController.ajouterCritere();
 
                                         break;
 
                                     case 5:
 
-                                        critereController
-                                                .afficherCriteres();
+                                        critereController.afficherCriteres();
 
                                         break;
 
                                     case 6:
 
-                                        critereController
-                                                .supprimerCritere();
+                                        critereController.supprimerCritere();
 
                                         break;
 
                                     case 7:
 
-                                        reviewController
-                                                .attribuerReviews();
+                                        reviewController.attribuerReviews();
 
                                         break;
 
@@ -116,95 +95,73 @@ public class Main {
 
                                     default:
 
-                                        System.out.println(
-                                                "Choix invalide."
-                                        );
+                                        System.out.println("Choix invalide.");
                                 }
                             }
 
                         } else {
 
-                            boolean logout =
-                                    false;
+                            boolean logout = false;
 
                             while (!logout) {
 
-                                Menu
-                                        .afficherMenuEtudiant();
+                                Menu.afficherMenuEtudiant();
 
-                                int choixEtu =
-                                        InputHelper.lireInt(
-                                                "Choix : "
-                                        );
+                                int choixEtu = InputHelper.lireInt("Choix : ");
 
                                 switch (choixEtu) {
 
                                     case 1:
 
-                                        assignmentController
-                                                .afficherAssignments();
+                                        assignmentController.afficherAssignments();
 
                                         break;
 
                                     case 2:
 
-                                        submissionController
-                                                .ajouterSubmission(
-                                                        user.getId()
-                                                );
+                                        submissionController.ajouterSubmission(user.getId());
 
                                         break;
 
                                     case 3:
 
-                                        submissionController
-                                                .afficherSubmissions();
+                                        submissionController.afficherSubmissions();
 
                                         break;
 
                                     case 4:
 
-                                        reviewController
-                                                .afficherMesReviews(
-                                                        user.getId()
-                                                );
+                                        reviewController.afficherMesReviews(user.getId());
 
                                         break;
 
                                     case 5:
 
-                                        evaluationController
-                                                .ajouterEvaluation(
-                                                        user.getId()
-                                                );
+                                        evaluationController.ajouterEvaluation(user.getId());
 
                                         break;
 
                                     case 6:
 
-                                        evaluationController
-                                                .afficherEvaluations();
+                                        evaluationController.afficherEvaluations();
 
                                         break;
 
                                     case 7:
 
-                                        detailController
-                                                .ajouterDetail();
+                                        detailController.ajouterDetail();
 
                                         break;
 
                                     case 8:
 
-                                        detailController
-                                                .afficherDetails();
+                                        detailController.afficherDetails();
 
                                         break;
 
                                     case 9:
 
-                                        reviewController
-                                                .terminerReview();
+                                        reviewController.terminerReview();
 
                                         break;
 
@@ -216,9 +173,7 @@ public class Main {
 
                                     default:
 
-                                        System.out.println(
-                                                "Choix invalide."
-                                        );
+                                        System.out.println("Choix invalide.");
                                 }
                             }
                         }
@@ -227,26 +182,15 @@ public class Main {
                     break;
 
                 case 2:
-
                     authController.register();
-
                     break;
 
                 case 0:
-
                     quitter = true;
-
-                    System.out.println(
-                            "Au revoir."
-                    );
-
+                    System.out.println("Au revoir.");
                     break;
-
                 default:
-
-                    System.out.println(
-                            "Choix invalide."
-                    );
+                    System.out.println("Choix invalide.");
             }
         }
     }

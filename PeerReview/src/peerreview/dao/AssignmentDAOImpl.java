@@ -9,13 +9,10 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AssignmentDAOImpl
-        implements AssignmentDAO {
+public class AssignmentDAOImpl implements AssignmentDAO {
 
     @Override
-    public boolean ajouterAssignment(
-            Assignment assignment
-    ) {
+    public boolean ajouterAssignment(Assignment assignment) {
 
         Connection connection = null;
 
@@ -23,32 +20,17 @@ public class AssignmentDAOImpl
 
         try {
 
-            connection =
-                    ConnectionDatabase
-                            .getConnection();
+            connection = ConnectionDatabase.getConnection();
 
-            String sql =
-                    "INSERT INTO Assignments " +
-                            "(titre, description, dateLimite) " +
-                            "VALUES (?, ?, ?)";
+            String sql = "INSERT INTO Assignments (titre, description, dateLimite) VALUES (?, ?, ?)";
 
-            ps =
-                    connection.prepareStatement(sql);
+            ps = connection.prepareStatement(sql);
 
-            ps.setString(
-                    1,
-                    assignment.getTitre()
-            );
+            ps.setString(1, assignment.getTitre());
 
-            ps.setString(
-                    2,
-                    assignment.getDescription()
-            );
+            ps.setString(2, assignment.getDescription());
 
-            ps.setString(
-                    3,
-                    assignment.getDateLimite()
-            );
+            ps.setString(3, assignment.getDateLimite());
 
             ps.executeUpdate();
 
@@ -56,20 +38,16 @@ public class AssignmentDAOImpl
 
         } catch (Exception e) {
 
-            System.out.println(
-                    e.getMessage()
-            );
+            System.out.println(e.getMessage());
         }
 
         return false;
     }
 
     @Override
-    public List<Assignment>
-    afficherAssignments() {
+    public List<Assignment> afficherAssignments() {
 
-        List<Assignment> liste =
-                new ArrayList<>();
+        List<Assignment> liste = new ArrayList<>();
 
         Connection connection = null;
 
@@ -79,65 +57,39 @@ public class AssignmentDAOImpl
 
         try {
 
-            connection =
-                    ConnectionDatabase
-                            .getConnection();
+            connection = ConnectionDatabase.getConnection();
 
-            String sql =
-                    "SELECT * FROM Assignments";
+            String sql = "SELECT * FROM Assignments";
 
-            ps =
-                    connection.prepareStatement(sql);
+            ps = connection.prepareStatement(sql);
 
-            rs =
-                    ps.executeQuery();
+            rs = ps.executeQuery();
 
             while (rs.next()) {
 
-                Assignment assignment =
-                        new Assignment();
+                Assignment assignment = new Assignment();
 
-                assignment.setId(
-                        rs.getInt("id")
-                );
+                assignment.setId(rs.getInt("id"));
 
-                assignment.setTitre(
-                        rs.getString(
-                                "titre"
-                        )
-                );
+                assignment.setTitre(rs.getString("titre"));
 
-                assignment.setDescription(
-                        rs.getString(
-                                "description"
-                        )
-                );
+                assignment.setDescription(rs.getString("description"));
 
-                assignment.setDateLimite(
-                        rs.getString(
-                                "dateLimite"
-                        )
-                );
+                assignment.setDateLimite(rs.getString("dateLimite"));
 
-                liste.add(
-                        assignment
-                );
+                liste.add(assignment);
             }
 
         } catch (Exception e) {
 
-            System.out.println(
-                    e.getMessage()
-            );
+            System.out.println(e.getMessage());
         }
 
         return liste;
     }
 
     @Override
-    public boolean supprimerAssignment(
-            int id
-    ) {
+    public boolean supprimerAssignment(int id) {
 
         Connection connection = null;
 
@@ -145,21 +97,13 @@ public class AssignmentDAOImpl
 
         try {
 
-            connection =
-                    ConnectionDatabase
-                            .getConnection();
+            connection = ConnectionDatabase.getConnection();
 
-            String sql =
-                    "DELETE FROM Assignments " +
-                            "WHERE id=?";
+            String sql = "DELETE FROM Assignments WHERE id=?";
 
-            ps =
-                    connection.prepareStatement(sql);
+            ps = connection.prepareStatement(sql);
 
-            ps.setInt(
-                    1,
-                    id
-            );
+            ps.setInt(1, id);
 
             ps.executeUpdate();
 
@@ -167,9 +111,7 @@ public class AssignmentDAOImpl
 
         } catch (Exception e) {
 
-            System.out.println(
-                    e.getMessage()
-            );
+            System.out.println(e.getMessage());
         }
 
         return false;

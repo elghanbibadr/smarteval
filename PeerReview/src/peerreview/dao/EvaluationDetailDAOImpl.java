@@ -9,13 +9,10 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EvaluationDetailDAOImpl
-        implements EvaluationDetailDAO {
+public class EvaluationDetailDAOImpl implements EvaluationDetailDAO {
 
     @Override
-    public boolean ajouterDetail(
-            EvaluationDetail detail
-    ) {
+    public boolean ajouterDetail(EvaluationDetail detail) {
 
         Connection connection = null;
 
@@ -23,32 +20,17 @@ public class EvaluationDetailDAOImpl
 
         try {
 
-            connection =
-                    ConnectionDatabase
-                            .getConnection();
+            connection = ConnectionDatabase.getConnection();
 
-            String sql =
-                    "INSERT INTO EvaluationDetails " +
-                            "(note, evaluation_id, critere_id) " +
-                            "VALUES (?, ?, ?)";
+            String sql = "INSERT INTO EvaluationDetails (note, evaluation_id, critere_id) VALUES (?, ?, ?)";
 
-            ps =
-                    connection.prepareStatement(sql);
+            ps = connection.prepareStatement(sql);
 
-            ps.setInt(
-                    1,
-                    detail.getNote()
-            );
+            ps.setInt(1, detail.getNote());
 
-            ps.setInt(
-                    2,
-                    detail.getEvaluationId()
-            );
+            ps.setInt(2, detail.getEvaluationId());
 
-            ps.setInt(
-                    3,
-                    detail.getCritereId()
-            );
+            ps.setInt(3, detail.getCritereId());
 
             ps.executeUpdate();
 
@@ -56,20 +38,16 @@ public class EvaluationDetailDAOImpl
 
         } catch (Exception e) {
 
-            System.out.println(
-                    e.getMessage()
-            );
+            System.out.println(e.getMessage());
         }
 
         return false;
     }
 
     @Override
-    public List<EvaluationDetail>
-    afficherDetails() {
+    public List<EvaluationDetail> afficherDetails() {
 
-        List<EvaluationDetail> liste =
-                new ArrayList<>();
+        List<EvaluationDetail> liste = new ArrayList<>();
 
         Connection connection = null;
 
@@ -79,65 +57,41 @@ public class EvaluationDetailDAOImpl
 
         try {
 
-            connection =
-                    ConnectionDatabase
-                            .getConnection();
+            connection = ConnectionDatabase.getConnection();
 
-            String sql =
-                    "SELECT * FROM EvaluationDetails";
+            String sql = "SELECT * FROM EvaluationDetails";
 
-            ps =
-                    connection.prepareStatement(sql);
+            ps = connection.prepareStatement(sql);
 
-            rs =
-                    ps.executeQuery();
+            rs = ps.executeQuery();
 
             while (rs.next()) {
 
-                EvaluationDetail detail =
-                        new EvaluationDetail();
+                EvaluationDetail detail = new EvaluationDetail();
 
-                detail.setId(
-                        rs.getInt("id")
-                );
+                detail.setId(rs.getInt("id"));
 
-                detail.setNote(
-                        rs.getInt("note")
-                );
+                detail.setNote(rs.getInt("note"));
 
-                detail.setEvaluationId(
-                        rs.getInt(
-                                "evaluation_id"
-                        )
-                );
+                detail.setEvaluationId(rs.getInt("evaluation_id"));
 
-                detail.setCritereId(
-                        rs.getInt(
-                                "critere_id"
-                        )
-                );
+                detail.setCritereId(rs.getInt("critere_id"));
 
                 liste.add(detail);
             }
 
         } catch (Exception e) {
 
-            System.out.println(
-                    e.getMessage()
-            );
+            System.out.println(e.getMessage());
         }
 
         return liste;
     }
 
     @Override
-    public List<EvaluationDetail>
-    afficherDetailsParEvaluation(
-            int evaluationId
-    ) {
+    public List<EvaluationDetail> afficherDetailsParEvaluation(int evaluationId) {
 
-        List<EvaluationDetail> liste =
-                new ArrayList<>();
+        List<EvaluationDetail> liste = new ArrayList<>();
 
         Connection connection = null;
 
@@ -147,58 +101,34 @@ public class EvaluationDetailDAOImpl
 
         try {
 
-            connection =
-                    ConnectionDatabase
-                            .getConnection();
+            connection = ConnectionDatabase.getConnection();
 
-            String sql =
-                    "SELECT * FROM EvaluationDetails " +
-                            "WHERE evaluation_id=?";
+            String sql = "SELECT * FROM EvaluationDetails WHERE evaluation_id=?";
 
-            ps =
-                    connection.prepareStatement(sql);
+            ps = connection.prepareStatement(sql);
 
-            ps.setInt(
-                    1,
-                    evaluationId
-            );
+            ps.setInt(1, evaluationId);
 
-            rs =
-                    ps.executeQuery();
+            rs = ps.executeQuery();
 
             while (rs.next()) {
 
-                EvaluationDetail detail =
-                        new EvaluationDetail();
+                EvaluationDetail detail = new EvaluationDetail();
 
-                detail.setId(
-                        rs.getInt("id")
-                );
+                detail.setId(rs.getInt("id"));
 
-                detail.setNote(
-                        rs.getInt("note")
-                );
+                detail.setNote(rs.getInt("note"));
 
-                detail.setEvaluationId(
-                        rs.getInt(
-                                "evaluation_id"
-                        )
-                );
+                detail.setEvaluationId(rs.getInt("evaluation_id"));
 
-                detail.setCritereId(
-                        rs.getInt(
-                                "critere_id"
-                        )
-                );
+                detail.setCritereId(rs.getInt("critere_id"));
 
                 liste.add(detail);
             }
 
         } catch (Exception e) {
 
-            System.out.println(
-                    e.getMessage()
-            );
+            System.out.println(e.getMessage());
         }
 
         return liste;

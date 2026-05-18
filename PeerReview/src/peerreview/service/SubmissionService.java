@@ -8,126 +8,73 @@ import java.util.List;
 
 public class SubmissionService {
 
-    private SubmissionDAO
-            submissionDAO;
+    private SubmissionDAO submissionDAO;
 
     public SubmissionService() {
 
-        submissionDAO =
-                new SubmissionDAOImpl();
+        submissionDAO = new SubmissionDAOImpl();
     }
 
-    public void ajouterSubmission(
+    public void ajouterSubmission(String fichierPDF, int etudiantId, int assignmentId) {
 
-            String fichierPDF,
+        Submission submission = new Submission();
 
-            int etudiantId,
+        submission.setFichierPDF(fichierPDF);
 
-            int assignmentId
-    ) {
+        submission.setEtudiantId(etudiantId);
 
-        Submission submission =
-                new Submission();
+        submission.setAssignmentId(assignmentId);
 
-        submission.setFichierPDF(
-                fichierPDF
-        );
-
-        submission.setEtudiantId(
-                etudiantId
-        );
-
-        submission.setAssignmentId(
-                assignmentId
-        );
-
-        boolean result =
-                submissionDAO
-                        .ajouterSubmission(
-                                submission
-                        );
+        boolean result = submissionDAO.ajouterSubmission(submission);
 
         if (result) {
 
-            System.out.println(
-                    "Submission ajoutee."
-            );
+            System.out.println("Submission ajoutee.");
 
         } else {
 
-            System.out.println(
-                    "Erreur ajout submission."
-            );
+            System.out.println("Erreur ajout submission.");
         }
     }
 
     public void afficherSubmissions() {
 
-        List<Submission> liste =
-                submissionDAO
-                        .afficherSubmissions();
+        List<Submission> liste = submissionDAO.afficherSubmissions();
 
         if (liste.isEmpty()) {
 
-            System.out.println(
-                    "Aucune submission."
-            );
+            System.out.println("Aucune submission.");
 
             return;
         }
 
         for (Submission submission : liste) {
 
-            System.out.println(
-                    "----------------"
-            );
+            System.out.println("----------------");
 
-            System.out.println(
-                    "ID : "
-                            + submission.getId()
-            );
+            System.out.println("ID : " + submission.getId());
 
-            System.out.println(
-                    "PDF : "
-                            + submission.getFichierPDF()
-            );
+            System.out.println("PDF : " + submission.getFichierPDF());
 
-            System.out.println(
-                    "Date : "
-                            + submission.getDateSubmission()
-            );
+            System.out.println("Date : " + submission.getDateSubmission());
 
-            System.out.println(
-                    "Etudiant ID : "
-                            + submission.getEtudiantId()
-            );
+            System.out.println("Etudiant ID : " + submission.getEtudiantId());
 
-            System.out.println(
-                    "Assignment ID : "
-                            + submission.getAssignmentId()
-            );
+            System.out.println("Assignment ID : " + submission.getAssignmentId());
         }
     }
 
-    public void supprimerSubmission(
-            int id
-    ) {
+    public void supprimerSubmission(int id) {
 
-        boolean result =
-                submissionDAO
-                        .supprimerSubmission(id);
+        boolean result = submissionDAO.supprimerSubmission(id);
 
         if (result) {
 
-            System.out.println(
-                    "Submission supprimee."
-            );
+            System.out.println("Submission supprimee.");
 
         } else {
 
-            System.out.println(
-                    "Erreur suppression."
-            );
+            System.out.println("Erreur suppression.");
         }
     }
 }

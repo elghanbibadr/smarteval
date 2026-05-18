@@ -16,31 +16,17 @@ public class Submission {
 
     }
 
-    public Submission(
-
-            int id,
-
-            String fichierPDF,
-
-            String dateSubmission,
-
-            int etudiantId,
-
-            int assignmentId
-    ) {
+    public Submission(int id, String fichierPDF, String dateSubmission, int etudiantId, int assignmentId) {
 
         this.id = id;
 
         this.fichierPDF = fichierPDF;
 
-        this.dateSubmission =
-                dateSubmission;
+        this.dateSubmission = dateSubmission;
 
-        this.etudiantId =
-                etudiantId;
+        this.etudiantId = etudiantId;
 
-        this.assignmentId =
-                assignmentId;
+        this.assignmentId = assignmentId;
     }
 
     public int getId() {
@@ -58,12 +44,9 @@ public class Submission {
         return fichierPDF;
     }
 
-    public void setFichierPDF(
-            String fichierPDF
-    ) {
+    public void setFichierPDF(String fichierPDF) {
 
-        this.fichierPDF =
-                fichierPDF;
+        this.fichierPDF = fichierPDF;
     }
 
     public String getDateSubmission() {
@@ -71,12 +54,9 @@ public class Submission {
         return dateSubmission;
     }
 
-    public void setDateSubmission(
-            String dateSubmission
-    ) {
+    public void setDateSubmission(String dateSubmission) {
 
-        this.dateSubmission =
-                dateSubmission;
+        this.dateSubmission = dateSubmission;
     }
 
     public int getEtudiantId() {
@@ -84,12 +64,9 @@ public class Submission {
         return etudiantId;
     }
 
-    public void setEtudiantId(
-            int etudiantId
-    ) {
+    public void setEtudiantId(int etudiantId) {
 
-        this.etudiantId =
-                etudiantId;
+        this.etudiantId = etudiantId;
     }
 
     public int getAssignmentId() {
@@ -97,11 +74,8 @@ public class Submission {
         return assignmentId;
     }
 
-    public void setAssignmentId(
-            int assignmentId
-    ) {
+    public void setAssignmentId(int assignmentId) {
 
-        this.assignmentId =
-                assignmentId;
+        this.assignmentId = assignmentId;
     }
 }

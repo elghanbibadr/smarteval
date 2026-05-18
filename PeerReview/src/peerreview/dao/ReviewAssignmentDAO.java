@@ -6,19 +6,11 @@ import java.util.List;
 
 public interface ReviewAssignmentDAO {
 
-    boolean ajouterReviewAssignment(
-            ReviewAssignment review
-    );
+    boolean ajouterReviewAssignment(ReviewAssignment review);
 
-    List<ReviewAssignment>
-    afficherReviews();
+    List<ReviewAssignment> afficherReviews();
 
-    List<ReviewAssignment>
-    afficherReviewsParEtudiant(
-            int evaluateurId
-    );
+    List<ReviewAssignment> afficherReviewsParEtudiant(int evaluateurId);
 
-    boolean terminerReview(
-            int reviewId
-    );
+    boolean terminerReview(int reviewId);
 }

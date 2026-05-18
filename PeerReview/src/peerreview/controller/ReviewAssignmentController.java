@@ -5,53 +5,35 @@ import peerreview.util.InputHelper;
 
 public class ReviewAssignmentController {
 
-    private ReviewAssignmentService
-            reviewService;
+    private ReviewAssignmentService reviewService;
 
     public ReviewAssignmentController() {
 
-        reviewService =
-                new ReviewAssignmentService();
+        reviewService = new ReviewAssignmentService();
     }
 
     public void attribuerReviews() {
 
         System.out.println();
 
-        System.out.println(
-                "===== ATTRIBUTION REVIEWS ====="
-        );
+        System.out.println("===== ATTRIBUTION REVIEWS =====");
 
-        reviewService
-                .attribuerReviews();
+        reviewService.attribuerReviews();
     }
 
-    public void afficherMesReviews(
-            int evaluateurId
-    ) {
+    public void afficherMesReviews(int evaluateurId) {
 
         System.out.println();
 
-        System.out.println(
-                "===== MES EVALUATIONS ====="
-        );
+        System.out.println("===== MES EVALUATIONS =====");
 
-        reviewService
-                .afficherMesReviews(
-                        evaluateurId
-                );
+        reviewService.afficherMesReviews(evaluateurId);
     }
 
     public void terminerReview() {
 
-        int reviewId =
-                InputHelper.lireInt(
-                        "Review ID : "
-                );
+        int reviewId = InputHelper.lireInt("Review ID : ");
 
-        reviewService
-                .terminerReview(
-                        reviewId
-                );
+        reviewService.terminerReview(reviewId);
     }
 }

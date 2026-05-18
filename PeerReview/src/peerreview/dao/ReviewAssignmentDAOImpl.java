@@ -9,13 +9,10 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReviewAssignmentDAOImpl
-        implements ReviewAssignmentDAO {
+public class ReviewAssignmentDAOImpl implements ReviewAssignmentDAO {
 
     @Override
-    public boolean ajouterReviewAssignment(
-            ReviewAssignment review
-    ) {
+    public boolean ajouterReviewAssignment(ReviewAssignment review) {
 
         Connection connection = null;
 
@@ -23,27 +20,15 @@ public class ReviewAssignmentDAOImpl
 
         try {
 
-            connection =
-                    ConnectionDatabase
-                            .getConnection();
+            connection = ConnectionDatabase.getConnection();
 
-            String sql =
-                    "INSERT INTO ReviewAssignments " +
-                            "(evaluateur_id, submission_id) " +
-                            "VALUES (?, ?)";
+            String sql = "INSERT INTO ReviewAssignments (evaluateur_id, submission_id) VALUES (?, ?)";
 
-            ps =
-                    connection.prepareStatement(sql);
+            ps = connection.prepareStatement(sql);
 
-            ps.setInt(
-                    1,
-                    review.getEvaluateurId()
-            );
+            ps.setInt(1, review.getEvaluateurId());
 
-            ps.setInt(
-                    2,
-                    review.getSubmissionId()
-            );
+            ps.setInt(2, review.getSubmissionId());
 
             ps.executeUpdate();
 
@@ -51,20 +36,16 @@ public class ReviewAssignmentDAOImpl
 
         } catch (Exception e) {
 
-            System.out.println(
-                    e.getMessage()
-            );
+            System.out.println(e.getMessage());
         }
 
         return false;
     }
 
     @Override
-    public List<ReviewAssignment>
-    afficherReviews() {
+    public List<ReviewAssignment> afficherReviews() {
 
-        List<ReviewAssignment> liste =
-                new ArrayList<>();
+        List<ReviewAssignment> liste = new ArrayList<>();
 
         Connection connection = null;
 
@@ -74,67 +55,41 @@ public class ReviewAssignmentDAOImpl
 
         try {
 
-            connection =
-                    ConnectionDatabase
-                            .getConnection();
+            connection = ConnectionDatabase.getConnection();
 
-            String sql =
-                    "SELECT * FROM ReviewAssignments";
+            String sql = "SELECT * FROM ReviewAssignments";
 
-            ps =
-                    connection.prepareStatement(sql);
+            ps = connection.prepareStatement(sql);
 
-            rs =
-                    ps.executeQuery();
+            rs = ps.executeQuery();
 
             while (rs.next()) {
 
-                ReviewAssignment review =
-                        new ReviewAssignment();
+                ReviewAssignment review = new ReviewAssignment();
 
-                review.setId(
-                        rs.getInt("id")
-                );
+                review.setId(rs.getInt("id"));
 
-                review.setEvaluateurId(
-                        rs.getInt(
-                                "evaluateur_id"
-                        )
-                );
+                review.setEvaluateurId(rs.getInt("evaluateur_id"));
 
-                review.setSubmissionId(
-                        rs.getInt(
-                                "submission_id"
-                        )
-                );
+                review.setSubmissionId(rs.getInt("submission_id"));
 
-                review.setDejaFait(
-                        rs.getBoolean(
-                                "dejaFait"
-                        )
-                );
+                review.setDejaFait(rs.getBoolean("dejaFait"));
 
                 liste.add(review);
             }
 
         } catch (Exception e) {
 
-            System.out.println(
-                    e.getMessage()
-            );
+            System.out.println(e.getMessage());
         }
 
         return liste;
     }
 
     @Override
-    public List<ReviewAssignment>
-    afficherReviewsParEtudiant(
-            int evaluateurId
-    ) {
+    public List<ReviewAssignment> afficherReviewsParEtudiant(int evaluateurId) {
 
-        List<ReviewAssignment> liste =
-                new ArrayList<>();
+        List<ReviewAssignment> liste = new ArrayList<>();
 
         Connection connection = null;
 
@@ -144,69 +99,41 @@ public class ReviewAssignmentDAOImpl
 
         try {
 
-            connection =
-                    ConnectionDatabase
-                            .getConnection();
+            connection = ConnectionDatabase.getConnection();
 
-            String sql =
-                    "SELECT * FROM ReviewAssignments " +
-                            "WHERE evaluateur_id=?";
+            String sql = "SELECT * FROM ReviewAssignments WHERE evaluateur_id=?";
 
-            ps =
-                    connection.prepareStatement(sql);
+            ps = connection.prepareStatement(sql);
 
-            ps.setInt(
-                    1,
-                    evaluateurId
-            );
+            ps.setInt(1, evaluateurId);
 
-            rs =
-                    ps.executeQuery();
+            rs = ps.executeQuery();
 
             while (rs.next()) {
 
-                ReviewAssignment review =
-                        new ReviewAssignment();
+                ReviewAssignment review = new ReviewAssignment();
 
-                review.setId(
-                        rs.getInt("id")
-                );
+                review.setId(rs.getInt("id"));
 
-                review.setEvaluateurId(
-                        rs.getInt(
-                                "evaluateur_id"
-                        )
-                );
+                review.setEvaluateurId(rs.getInt("evaluateur_id"));
 
-                review.setSubmissionId(
-                        rs.getInt(
-                                "submission_id"
-                        )
-                );
+                review.setSubmissionId(rs.getInt("submission_id"));
 
-                review.setDejaFait(
-                        rs.getBoolean(
-                                "dejaFait"
-                        )
-                );
+                review.setDejaFait(rs.getBoolean("dejaFait"));
 
                 liste.add(review);
             }
 
         } catch (Exception e) {
 
-            System.out.println(
-                    e.getMessage()
-            );
+            System.out.println(e.getMessage());
         }
 
         return liste;
     }
 
     @Override
-    public boolean terminerReview(
-            int reviewId
-    ) {
+    public boolean terminerReview(int reviewId) {
 
         Connection connection = null;
 
@@ -214,22 +141,13 @@ public class ReviewAssignmentDAOImpl
 
         try {
 
-            connection =
-                    ConnectionDatabase
-                            .getConnection();
+            connection = ConnectionDatabase.getConnection();
 
-            String sql =
-                    "UPDATE ReviewAssignments " +
-                            "SET dejaFait=1 " +
-                            "WHERE id=?";
+            String sql = "UPDATE ReviewAssignments SET dejaFait=1 WHERE id=?";
 
-            ps =
-                    connection.prepareStatement(sql);
+            ps = connection.prepareStatement(sql);
 
-            ps.setInt(
-                    1,
-                    reviewId
-            );
+            ps.setInt(1, reviewId);
 
             ps.executeUpdate();
 
@@ -237,9 +155,7 @@ public class ReviewAssignmentDAOImpl
 
         } catch (Exception e) {
 
-            System.out.println(
-                    e.getMessage()
-            );
+            System.out.println(e.getMessage());
         }
 
         return false;

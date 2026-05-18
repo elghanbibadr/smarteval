@@ -14,16 +14,7 @@ public class Assignment {
 
     }
 
-    public Assignment(
-
-            int id,
-
-            String titre,
-
-            String description,
-
-            String dateLimite
-    ) {
+    public Assignment(int id, String titre, String description, String dateLimite) {
 
         this.id = id;
 
@@ -59,9 +50,7 @@ public class Assignment {
         return description;
     }
 
-    public void setDescription(
-            String description
-    ) {
+    public void setDescription(String description) {
 
         this.description = description;
     }
@@ -71,9 +60,7 @@ public class Assignment {
         return dateLimite;
     }
 
-    public void setDateLimite(
-            String dateLimite
-    ) {
+    public void setDateLimite(String dateLimite) {
 
         this.dateLimite = dateLimite;
     }

@@ -14,27 +14,15 @@ public class ReviewAssignment {
 
     }
 
-    public ReviewAssignment(
-
-            int id,
-
-            int evaluateurId,
-
-            int submissionId,
-
-            boolean dejaFait
-    ) {
+    public ReviewAssignment(int id, int evaluateurId, int submissionId, boolean dejaFait) {
 
         this.id = id;
 
-        this.evaluateurId =
-                evaluateurId;
+        this.evaluateurId = evaluateurId;
 
-        this.submissionId =
-                submissionId;
+        this.submissionId = submissionId;
 
-        this.dejaFait =
-                dejaFait;
+        this.dejaFait = dejaFait;
     }
 
     public int getId() {
@@ -52,12 +40,9 @@ public class ReviewAssignment {
         return evaluateurId;
     }
 
-    public void setEvaluateurId(
-            int evaluateurId
-    ) {
+    public void setEvaluateurId(int evaluateurId) {
 
-        this.evaluateurId =
-                evaluateurId;
+        this.evaluateurId = evaluateurId;
     }
 
     public int getSubmissionId() {
@@ -65,12 +50,9 @@ public class ReviewAssignment {
         return submissionId;
     }
 
-    public void setSubmissionId(
-            int submissionId
-    ) {
+    public void setSubmissionId(int submissionId) {
 
-        this.submissionId =
-                submissionId;
+        this.submissionId = submissionId;
     }
 
     public boolean isDejaFait() {
@@ -78,11 +60,8 @@ public class ReviewAssignment {
         return dejaFait;
     }
 
-    public void setDejaFait(
-            boolean dejaFait
-    ) {
+    public void setDejaFait(boolean dejaFait) {
 
-        this.dejaFait =
-                dejaFait;
+        this.dejaFait = dejaFait;
     }
 }

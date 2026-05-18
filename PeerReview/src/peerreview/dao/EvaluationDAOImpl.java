@@ -9,13 +9,10 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EvaluationDAOImpl
-        implements EvaluationDAO {
+public class EvaluationDAOImpl implements EvaluationDAO {
 
     @Override
-    public boolean ajouterEvaluation(
-            Evaluation evaluation
-    ) {
+    public boolean ajouterEvaluation(Evaluation evaluation) {
 
         Connection connection = null;
 
@@ -23,32 +20,17 @@ public class EvaluationDAOImpl
 
         try {
 
-            connection =
-                    ConnectionDatabase
-                            .getConnection();
+            connection = ConnectionDatabase.getConnection();
 
-            String sql =
-                    "INSERT INTO Evaluations " +
-                            "(commentaire, evaluateur_id, submission_id) " +
-                            "VALUES (?, ?, ?)";
+            String sql = "INSERT INTO Evaluations (commentaire, evaluateur_id, submission_id) VALUES (?, ?, ?)";
 
-            ps =
-                    connection.prepareStatement(sql);
+            ps = connection.prepareStatement(sql);
 
-            ps.setString(
-                    1,
-                    evaluation.getCommentaire()
-            );
+            ps.setString(1, evaluation.getCommentaire());
 
-            ps.setInt(
-                    2,
-                    evaluation.getEvaluateurId()
-            );
+            ps.setInt(2, evaluation.getEvaluateurId());
 
-            ps.setInt(
-                    3,
-                    evaluation.getSubmissionId()
-            );
+            ps.setInt(3, evaluation.getSubmissionId());
 
             ps.executeUpdate();
 
@@ -56,20 +38,16 @@ public class EvaluationDAOImpl
 
         } catch (Exception e) {
 
-            System.out.println(
-                    e.getMessage()
-            );
+            System.out.println(e.getMessage());
         }
 
         return false;
     }
 
     @Override
-    public List<Evaluation>
-    afficherEvaluations() {
+    public List<Evaluation> afficherEvaluations() {
 
-        List<Evaluation> liste =
-                new ArrayList<>();
+        List<Evaluation> liste = new ArrayList<>();
 
         Connection connection = null;
 
@@ -79,75 +57,43 @@ public class EvaluationDAOImpl
 
         try {
 
-            connection =
-                    ConnectionDatabase
-                            .getConnection();
+            connection = ConnectionDatabase.getConnection();
 
-            String sql =
-                    "SELECT * FROM Evaluations";
+            String sql = "SELECT * FROM Evaluations";
 
-            ps =
-                    connection.prepareStatement(sql);
+            ps = connection.prepareStatement(sql);
 
-            rs =
-                    ps.executeQuery();
+            rs = ps.executeQuery();
 
             while (rs.next()) {
 
-                Evaluation evaluation =
-                        new Evaluation();
+                Evaluation evaluation = new Evaluation();
 
-                evaluation.setId(
-                        rs.getInt("id")
-                );
+                evaluation.setId(rs.getInt("id"));
 
-                evaluation.setCommentaire(
-                        rs.getString(
-                                "commentaire"
-                        )
-                );
+                evaluation.setCommentaire(rs.getString("commentaire"));
 
-                evaluation.setDateEvaluation(
-                        rs.getString(
-                                "dateEvaluation"
-                        )
-                );
+                evaluation.setDateEvaluation(rs.getString("dateEvaluation"));
 
-                evaluation.setEvaluateurId(
-                        rs.getInt(
-                                "evaluateur_id"
-                        )
-                );
+                evaluation.setEvaluateurId(rs.getInt("evaluateur_id"));
 
-                evaluation.setSubmissionId(
-                        rs.getInt(
-                                "submission_id"
-                        )
-                );
+                evaluation.setSubmissionId(rs.getInt("submission_id"));
 
-                liste.add(
-                        evaluation
-                );
+                liste.add(evaluation);
             }
 
         } catch (Exception e) {
 
-            System.out.println(
-                    e.getMessage()
-            );
+            System.out.println(e.getMessage());
         }
 
         return liste;
     }
 
     @Override
-    public List<Evaluation>
-    afficherEvaluationsParSubmission(
-            int submissionId
-    ) {
+    public List<Evaluation> afficherEvaluationsParSubmission(int submissionId) {
 
-        List<Evaluation> liste =
-                new ArrayList<>();
+        List<Evaluation> liste = new ArrayList<>();
 
         Connection connection = null;
 
@@ -157,68 +103,36 @@ public class EvaluationDAOImpl
 
         try {
 
-            connection =
-                    ConnectionDatabase
-                            .getConnection();
+            connection = ConnectionDatabase.getConnection();
 
-            String sql =
-                    "SELECT * FROM Evaluations " +
-                            "WHERE submission_id=?";
+            String sql = "SELECT * FROM Evaluations WHERE submission_id=?";
 
-            ps =
-                    connection.prepareStatement(sql);
+            ps = connection.prepareStatement(sql);
 
-            ps.setInt(
-                    1,
-                    submissionId
-            );
+            ps.setInt(1, submissionId);
 
-            rs =
-                    ps.executeQuery();
+            rs = ps.executeQuery();
 
             while (rs.next()) {
 
-                Evaluation evaluation =
-                        new Evaluation();
+                Evaluation evaluation = new Evaluation();
 
-                evaluation.setId(
-                        rs.getInt("id")
-                );
+                evaluation.setId(rs.getInt("id"));
 
-                evaluation.setCommentaire(
-                        rs.getString(
-                                "commentaire"
-                        )
-                );
+                evaluation.setCommentaire(rs.getString("commentaire"));
 
-                evaluation.setDateEvaluation(
-                        rs.getString(
-                                "dateEvaluation"
-                        )
-                );
+                evaluation.setDateEvaluation(rs.getString("dateEvaluation"));
 
-                evaluation.setEvaluateurId(
-                        rs.getInt(
-                                "evaluateur_id"
-                        )
-                );
+                evaluation.setEvaluateurId(rs.getInt("evaluateur_id"));
 
-                evaluation.setSubmissionId(
-                        rs.getInt(
-                                "submission_id"
-                        )
-                );
+                evaluation.setSubmissionId(rs.getInt("submission_id"));
 
-                liste.add(
-                        evaluation
-                );
+                liste.add(evaluation);
             }
 
         } catch (Exception e) {
 
-            System.out.println(
-                    e.getMessage()
-            );
+            System.out.println(e.getMessage());
         }
 
         return liste;

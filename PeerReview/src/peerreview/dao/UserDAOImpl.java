@@ -10,9 +10,7 @@ import java.sql.ResultSet;
 public class UserDAOImpl implements UserDAO {
 
     @Override
-    public boolean register(
-            User user
-    ) {
+    public boolean register(User user) {
 
         Connection connection = null;
 
@@ -20,37 +18,19 @@ public class UserDAOImpl implements UserDAO {
 
         try {
 
-            connection =
-                    ConnectionDatabase
-                            .getConnection();
+            connection = ConnectionDatabase.getConnection();
 
-            String sql =
-                    "INSERT INTO Users " +
-                            "(nom, email, motDePasse, role) " +
-                            "VALUES (?, ?, ?, ?)";
+            String sql = "INSERT INTO Users (nom, email, motDePasse, role) VALUES (?, ?, ?, ?)";
 
-            ps =
-                    connection.prepareStatement(sql);
+            ps = connection.prepareStatement(sql);
 
-            ps.setString(
-                    1,
-                    user.getNom()
-            );
+            ps.setString(1, user.getNom());
 
-            ps.setString(
-                    2,
-                    user.getEmail()
-            );
+            ps.setString(2, user.getEmail());
 
-            ps.setString(
-                    3,
-                    user.getMotDePasse()
-            );
+            ps.setString(3, user.getMotDePasse());
 
-            ps.setString(
-                    4,
-                    user.getRole()
-            );
+            ps.setString(4, user.getRole());
 
             ps.executeUpdate();
 
@@ -58,21 +38,14 @@ public class UserDAOImpl implements UserDAO {
 
         } catch (Exception e) {
 
-            System.out.println(
-                    e.getMessage()
-            );
+            System.out.println(e.getMessage());
         }
 
         return false;
     }
 
     @Override
-    public User login(
-
-            String email,
-
-            String motDePasse
-    ) {
+    public User login(String email, String motDePasse) {
 
         Connection connection = null;
 
@@ -82,66 +55,38 @@ public class UserDAOImpl implements UserDAO {
 
         try {
 
-            connection =
-                    ConnectionDatabase
-                            .getConnection();
+            connection = ConnectionDatabase.getConnection();
 
-            String sql =
-                    "SELECT * FROM Users " +
-                            "WHERE email=? " +
-                            "AND motDePasse=?";
+            String sql = "SELECT * FROM Users WHERE email=? AND motDePasse=?";
 
-            ps =
-                    connection.prepareStatement(sql);
+            ps = connection.prepareStatement(sql);
 
-            ps.setString(
-                    1,
-                    email
-            );
+            ps.setString(1, email);
 
-            ps.setString(
-                    2,
-                    motDePasse
-            );
+            ps.setString(2, motDePasse);
 
-            rs =
-                    ps.executeQuery();
+            rs = ps.executeQuery();
 
             if (rs.next()) {
 
-                User user =
-                        new User();
+                User user = new User();
 
-                user.setId(
-                        rs.getInt("id")
-                );
+                user.setId(rs.getInt("id"));
 
-                user.setNom(
-                        rs.getString("nom")
-                );
+                user.setNom(rs.getString("nom"));
 
-                user.setEmail(
-                        rs.getString("email")
-                );
+                user.setEmail(rs.getString("email"));
 
-                user.setMotDePasse(
-                        rs.getString(
-                                "motDePasse"
-                        )
-                );
+                user.setMotDePasse(rs.getString("motDePasse"));
 
-                user.setRole(
-                        rs.getString("role")
-                );
+                user.setRole(rs.getString("role"));
 
                 return user;
             }
 
         } catch (Exception e) {
 
-            System.out.println(
-                    e.getMessage()
-            );
+            System.out.println(e.getMessage());
         }
 
         return null;

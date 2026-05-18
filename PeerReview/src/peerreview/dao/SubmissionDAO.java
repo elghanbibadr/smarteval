@@ -6,14 +6,9 @@ import java.util.List;
 
 public interface SubmissionDAO {
 
-    boolean ajouterSubmission(
-            Submission submission
-    );
+    boolean ajouterSubmission(Submission submission);
 
-    List<Submission>
-    afficherSubmissions();
+    List<Submission> afficherSubmissions();
 
-    boolean supprimerSubmission(
-            int id
-    );
+    boolean supprimerSubmission(int id);
 }

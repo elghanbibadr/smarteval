@@ -16,18 +16,7 @@ public class User {
 
     }
 
-    public User(
-
-            int id,
-
-            String nom,
-
-            String email,
-
-            String motDePasse,
-
-            String role
-    ) {
+    public User(int id, String nom, String email, String motDePasse, String role) {
 
         this.id = id;
 
@@ -75,9 +64,7 @@ public class User {
         return motDePasse;
     }
 
-    public void setMotDePasse(
-            String motDePasse
-    ) {
+    public void setMotDePasse(String motDePasse) {
 
         this.motDePasse = motDePasse;
     }

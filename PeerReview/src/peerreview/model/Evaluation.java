@@ -16,32 +16,17 @@ public class Evaluation {
 
     }
 
-    public Evaluation(
-
-            int id,
-
-            String commentaire,
-
-            String dateEvaluation,
-
-            int evaluateurId,
-
-            int submissionId
-    ) {
+    public Evaluation(int id, String commentaire, String dateEvaluation, int evaluateurId, int submissionId) {
 
         this.id = id;
 
-        this.commentaire =
-                commentaire;
+        this.commentaire = commentaire;
 
-        this.dateEvaluation =
-                dateEvaluation;
+        this.dateEvaluation = dateEvaluation;
 
-        this.evaluateurId =
-                evaluateurId;
+        this.evaluateurId = evaluateurId;
 
-        this.submissionId =
-                submissionId;
+        this.submissionId = submissionId;
     }
 
     public int getId() {
@@ -59,12 +44,9 @@ public class Evaluation {
         return commentaire;
     }
 
-    public void setCommentaire(
-            String commentaire
-    ) {
+    public void setCommentaire(String commentaire) {
 
-        this.commentaire =
-                commentaire;
+        this.commentaire = commentaire;
     }
 
     public String getDateEvaluation() {
@@ -72,12 +54,9 @@ public class Evaluation {
         return dateEvaluation;
     }
 
-    public void setDateEvaluation(
-            String dateEvaluation
-    ) {
+    public void setDateEvaluation(String dateEvaluation) {
 
-        this.dateEvaluation =
-                dateEvaluation;
+        this.dateEvaluation = dateEvaluation;
     }
 
     public int getEvaluateurId() {
@@ -85,12 +64,9 @@ public class Evaluation {
         return evaluateurId;
     }
 
-    public void setEvaluateurId(
-            int evaluateurId
-    ) {
+    public void setEvaluateurId(int evaluateurId) {
 
-        this.evaluateurId =
-                evaluateurId;
+        this.evaluateurId = evaluateurId;
     }
 
     public int getSubmissionId() {
@@ -98,11 +74,8 @@ public class Evaluation {
         return submissionId;
     }
 
-    public void setSubmissionId(
-            int submissionId
-    ) {
+    public void setSubmissionId(int submissionId) {
 
-        this.submissionId =
-                submissionId;
+        this.submissionId = submissionId;
     }
 }

@@ -6,13 +6,9 @@ import java.util.List;
 
 public interface AssignmentDAO {
 
-    boolean ajouterAssignment(
-            Assignment assignment
-    );
+    boolean ajouterAssignment(Assignment assignment);
 
     List<Assignment> afficherAssignments();
 
-    boolean supprimerAssignment(
-            int id
-    );
+    boolean supprimerAssignment(int id);
 }

@@ -5,55 +5,32 @@ import peerreview.util.InputHelper;
 
 public class EvaluationController {
 
-    private EvaluationService
-            evaluationService;
+    private EvaluationService evaluationService;
 
     public EvaluationController() {
 
-        evaluationService =
-                new EvaluationService();
+        evaluationService = new EvaluationService();
     }
 
-    public void ajouterEvaluation(
-            int evaluateurId
-    ) {
+    public void ajouterEvaluation(int evaluateurId) {
 
         System.out.println();
 
-        System.out.println(
-                "===== AJOUT EVALUATION ====="
-        );
+        System.out.println("===== AJOUT EVALUATION =====");
 
-        String commentaire =
-                InputHelper.lireString(
-                        "Commentaire : "
-                );
+        String commentaire = InputHelper.lireString("Commentaire : ");
 
-        int submissionId =
-                InputHelper.lireInt(
-                        "Submission ID : "
-                );
+        int submissionId = InputHelper.lireInt("Submission ID : ");
 
-        evaluationService
-                .ajouterEvaluation(
-
-                        commentaire,
-
-                        evaluateurId,
-
-                        submissionId
-                );
+        evaluationService.ajouterEvaluation(commentaire, evaluateurId, submissionId);
     }
 
     public void afficherEvaluations() {
 
         System.out.println();
 
-        System.out.println(
-                "===== LISTE EVALUATIONS ====="
-        );
+        System.out.println("===== LISTE EVALUATIONS =====");
 
-        evaluationService
-                .afficherEvaluations();
+        evaluationService.afficherEvaluations();
     }
 }

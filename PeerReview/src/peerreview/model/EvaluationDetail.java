@@ -14,26 +14,15 @@ public class EvaluationDetail {
 
     }
 
-    public EvaluationDetail(
-
-            int id,
-
-            int note,
-
-            int evaluationId,
-
-            int critereId
-    ) {
+    public EvaluationDetail(int id, int note, int evaluationId, int critereId) {
 
         this.id = id;
 
         this.note = note;
 
-        this.evaluationId =
-                evaluationId;
+        this.evaluationId = evaluationId;
 
-        this.critereId =
-                critereId;
+        this.critereId = critereId;
     }
 
     public int getId() {
@@ -61,12 +50,9 @@ public class EvaluationDetail {
         return evaluationId;
     }
 
-    public void setEvaluationId(
-            int evaluationId
-    ) {
+    public void setEvaluationId(int evaluationId) {
 
-        this.evaluationId =
-                evaluationId;
+        this.evaluationId = evaluationId;
     }
 
     public int getCritereId() {
@@ -74,11 +60,8 @@ public class EvaluationDetail {
         return critereId;
     }
 
-    public void setCritereId(
-            int critereId
-    ) {
+    public void setCritereId(int critereId) {
 
-        this.critereId =
-                critereId;
+        this.critereId = critereId;
     }
 }
